@@ -1,0 +1,11 @@
+{
+    "name": "ShopProduct",
+    "alias": "shopproduct",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ShopProduct\\Providers\\ShopProductServiceProvider"
+    ],
+    "files": []
+}

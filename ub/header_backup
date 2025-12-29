@@ -1,0 +1,355 @@
+<?php
+session_start();
+$asset_url =  (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]".'/feminineafrica.ci/';
+
+require_once"admin/classes/dbconfig.php";
+ $db= new dbconfig(); 
+$category_result = $db->dbperform("select * from `tbl_category`");
+// print_r($category_result); die();
+
+      
+  
+?>
+
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from www.greateasternretail.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Sep 2023 10:56:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="<?=$asset_url?>d2afzgorr4mxtq.cloudfront.net/assets/favicon/favicon-16x16.png">
+    <meta name="base_url" content="index.html">
+    <link rel="canonical" href="index.html" />
+    <!-- HTML Meta Tags -->
+    <title>Great Eastern Retail | Online Electronics Store In India</title>
+    <meta name="description" content="Compare & Buy electronic items from India's leading online store. Shop AC's, Television, Refrigerator, Water Purifier, Smartphones, Laptops, etc. from the top industry brands.">
+    <meta name="keywords" content="online shopping, low cost led, mobile, washing machine, microwave, dryer, washer, audio, speakers, Fridges, refrigerators, ac, air condition, laptops, tablet, iphones, ipad, imac, and many more" />
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Great Eastern Retail | Online Electronics Store In India">
+    <meta property="og:description" content="Compare & Buy electronic items from India's leading online store. Shop AC's, Television, Refrigerator, Water Purifier, Smartphones, Laptops, etc. from the top industry brands.">
+    <meta property="og:image" content="static/assets/img/great-eastern.png">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="greateasternretail.com">
+    <meta property="twitter:url" content="index.html">
+    <meta name="twitter:title" content="Great Eastern Retail | Online Electronics Store In India">
+    <meta name="twitter:description" content="Compare & Buy electronic items from India's leading online store. Shop AC's, Television, Refrigerator, Water Purifier, Smartphones, Laptops, etc. from the top industry brands.">
+    <meta name="twitter:image" content="static/assets/img/great-eastern.png">
+    <!-- cdn https://d1culczn4pnwut.cloudfront.net -->
+    <link rel="stylesheet" href="<?=$asset_url?>d2afzgorr4mxtq.cloudfront.net/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/ge_assets/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="<?=$asset_url?>d2afzgorr4mxtq.cloudfront.net/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?=$asset_url?>d2afzgorr4mxtq.cloudfront.net/assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="<?=$asset_url?>d2afzgorr4mxtq.cloudfront.net/assets/css/home.min.css">
+
+    <script src="<?=$asset_url?>d2afzgorr4mxtq.cloudfront.net/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="<?=$asset_url?>d2afzgorr4mxtq.cloudfront.net/assets/js/jquery.js"></script>
+    <script src="<?=$asset_url?>d2afzgorr4mxtq.cloudfront.net/assets/js/owl.carousel.min.js"></script>
+    
+    
+    
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="<?=$asset_url?>static/assets/vendor/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="<?=$asset_url?>static/assets/css/font-electro.css">
+
+    <link rel="stylesheet" href="<?=$asset_url?>d2afzgorr4mxtq.cloudfront.net/css/bundle.min.css">
+    <!-- CSS Electro Template -->
+    <link rel="stylesheet" href="<?=$asset_url?>d2afzgorr4mxtq.cloudfront.net/css/theme.min.css">
+    <link rel="stylesheet" href="<?=$asset_url?>d2afzgorr4mxtq.cloudfront.net/css/grid.min.css">
+    
+    <script src="<?=$asset_url?>d2afzgorr4mxtq.cloudfront.net/vendor/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="<?=$asset_url?>d2afzgorr4mxtq.cloudfront.net/css/responsive.min.css"/>
+    
+    
+    <link rel='stylesheet' href='<?=$asset_url?>sachinchoolur.github.io/lightslider/dist/css/lightslider.css'>
+    <link rel='stylesheet' href='<?=$asset_url?>cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css'>
+    
+    
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCp-H598wbMhBWMz9I_zbvdcknH-fiBVCo" defer></script>
+    
+    
+    <!-- <script src="https://d1culczn4pnwut.cloudfront.net/assets/js/theme.js?ver=1.1"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" referrerpolicy="no-referrer"></script> -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K9BVB9K');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9BVB9K"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    '../connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '410299896742013');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=410299896742013&amp;ev=PageView&amp;noscript=1"/></noscript>
+    <!-- End Facebook Pixel Code -->
+</head>
+
+<body>
+    <!-- ========== HEADER ========== -->
+     
+<!-- ========== HEADER ========== -->
+    <!-- Topbar -->
+    <div class="header-topbar d-none d-lg-block">
+        <div class="container">
+            <div class="d-flex justify-content-between">
+                <div class="topbar-left">
+                    <ul class="offer-msg"></ul>
+                </div>
+                <div class="topbar-right ml-auto py-2 ">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item mr-0">
+                            <a href="store-locator.html" class="header-topbar__nav-link"><i class="bi bi-geo-alt mr-1"></i>
+                                Store Locator</a>
+                        </li>
+                        <li class="list-inline-item mr-0">
+                            <a  data-bs-toggle="modal" href="#loginModal" role="button"  class="header-topbar__nav-link"><i class="bi bi-order"></i> Track Your Order</a>
+                        </li>
+                        <li class="list-inline-item mr-0">
+                            
+                            <a href="javascript:;" onclick="closeCurrentlocation()" class="header-topbar__nav-link"><i class="bi bi-geo-alt mr-1"></i> My Location</a>
+                            
+                        </li>
+                        <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
+                            <a href="contact-us.html" class="header-topbar__nav-link"><i class="bi bi-telephone"></i>
+                                Contact Us</a>
+                        </li>
+                        <?php 
+                        // print_r($_SESSION['user_id']); die();
+                        if(isset($_SESSION['user_id'])){
+                        //     $user_id=$_SESSION['user_id'];
+                        //     // $user_id = $_SESSION['user_id'];
+                        //     // echo "this is user id $user_id";
+                        // $sql ="select * from `tbl_user` WHERE user_pk_id=$user_id ";
+                        // $result = mysqli_query($con,$sql);
+                        // $row = mysqli_fetch_assoc($result);
+                        
+                        // $full_name = $row['full_name'];
+                        // echo "$row";
+                        
+                        $user_id=$_SESSION['user_id'];
+                        $sql_users = $db->dbperform("select * from `tbl_user` WHERE user_pk_id=$user_id");
+                        $users = mysqli_fetch_assoc($sql_users);
+                        $full_name=$users['full_name'];
+                        ?> 
+                        <li class="list-inline-item mr-0">
+                            <a   href="<?=$asset_url?>profile.php" class="header-topbar__nav-link">
+                                
+                                <i class="bi bi-person"></i><?= $full_name ?>
+                                </a> 
+                                <button class="logout_btn">Logout</button>
+                            
+                            
+                        </li>
+                        <?php }else{
+                        // echo "there is not session id";
+                        ?>
+                        <li class="list-inline-item mr-0">
+                            <a  data-bs-toggle="modal" href="#loginModal" role="button"  class="header-topbar__nav-link">
+                                <i class="bi bi-person"></i> Register <span class="text-gray-50">/</span> Sign in
+                            </a>
+                            
+                        </li>
+                        <?php }?>
+                        <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
+                            <a  data-bs-toggle="modal" href="#loginModal" role="button"  class="header-topbar__nav-link"><i class="bi bi-heart"></i>
+                                Wishlist</a>
+                        </li>
+                        <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
+                            <a href="e-catalogue.html" class="header-topbar__nav-link"><i class="bi bi-journal-album"></i>
+                                E-Catalogue </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Topbar -->
+    <!--        Main header -->
+    <div class="main-header__section sticky-top bg-white">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white justify-content-between">
+                <div class="mobile-menu">
+                    <button type="button" class="btn-open first"><i class="bi bi-list"></i></button>
+                </div>
+                <div class="logo"><a class="navbar-brand" href="<?=$asset_url?>index.php"><img
+                            src="<?=$asset_url?>d1kivxjtmxnd4.cloudfront.net/assets/img/great-eastern.png" height="46"
+                            alt="great eastern" /></a></div>
+                <div class="search-category-container d-none d-lg-block align-self-center">
+                    <form class="min-width-600" id="search-form">
+                        <div class="input-group search-bar-category">
+                            <div class="dropdown category-btn">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">All Categories</a>
+                                <ul class="dropdown-menu mega-menu">
+                                    <?php foreach($category_result as $row){
+                                        // print_r($row);
+                                        $cate_id=$row['cat_pk_id'];
+                                    $subcategory_result = $db->dbperform("SELECT * FROM `tbl_subCategory` WHERE category_id=$cate_id");
+                                    
+                                    
+                                    ?>
+                                    <li class="has-megasubmenu">
+                                        <a class="dropdown-item" href="#"><?=$row['category']?></a>
+                                        <div class="megasubmenu dropdown-menu" style="height: 100%;overflow-y: scroll;">
+                                            <div class="row">
+                                                <div class="col-9">
+                                                    <div class="row">
+                                                    <?php foreach($subcategory_result as $subcat){
+                                                     ?>
+                                                            <div class="col-4">
+                                                            <div class="product-menu-list">
+                                                                <a href="shop/air-conditioner/split/index.html"><h6 class="title"><?= $subcat['category']?></h6></a>
+                                                                
+                                                                <ul class="list-unstyled">
+                                                                
+                                                                    
+                                                                
+                                                                    
+                                                                    <li><a href="shop/air-conditioner/split/inverter/index.html">Inverter</a></li>
+                                                                    
+                                                                
+                                                                    
+                                                                    <!--<li><a href="shop/air-conditioner/split/non-inverter/index.html">Non Inverter</a></li>-->
+                                                                    
+                                                                
+                                                                </ul>
+                                                            </div>
+                                                            </div>
+                                                        
+                                         ><?php }?>           
+                                                        
+                                                            
+                                                    
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <img onclick="location.href='shop/air-conditioner/index.html'" class="img-fluid"
+                                                        src="<?=$asset_url?>d2afzgorr4mxtq.cloudfront.net/filters_format(webp)/filters_quality(70)/images/Category_dropdown_12-03_yk77Yfp.png"
+                                                        alt="category">
+                                                </div>
+                                            </div><!-- end row -->
+
+                                        </div>
+                                    </li>
+                                    <?php }?>
+                                    
+                                     
+                                </ul>
+                            </div>
+                            <div class="easy-autocomplete eac-plate-dark"><input aria-describedby="search-btn" aria-label="Search for products, brands &amp; more" class="search-input" id="searchproduct-item" placeholder="Search for products, brands &amp; more" required="" type="search" autocomplete="off"><div class="easy-autocomplete-container" id="eac-container-searchproduct-item"><ul style="display: none;"></ul></div></div>
+                            <!-- <input type="text" class="search-input" id="searchproduct-item" placeholder="Search for products, brands & more"
+                                aria-label="Search for products, brands & more" aria-describedby="search-btn" required> -->
+                            <button class="btn" type="button" id="search-btn"><i class="bi bi-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="others-menu align-self-center">
+                    <ul class="navbar-nav justify-content-end">
+                        <li class="nav-item d-inline d-lg-none"><a class="nav-link"  data-bs-toggle="modal" href="#loginModal" role="button"  role="button"><i
+                                    class="bi bi-person"></i></a></li>
+                        <li class="nav-item d-none d-lg-inline"><a class="nav-link" href="tel:033-40372000"><i
+                                    class="bi bi-headset"></i>
+                                <span class="d-none d-lg-inline">Customer Care</span> </a></li>
+                        <li class="nav-item position-relative"><a class="nav-link" href="cart_2/index.html"><i class="bi bi-cart3"></i> <span
+                                    class="d-none d-lg-inline">My Cart</span><div class="cart-count" style="display: none;"></div>
+                            </a></li>
+                        <li class="nav-item d-none d-lg-none"><a class="nav-link" href="#"><i class="bi bi-search"></i></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="mobile-search-bar">
+            <div class="container">
+                <form class="mobile-search-form">
+                    <input type="text" class="search-input" id="search-mobile-view" placeholder="Search for products, brands & more" aria-label="Search for products, brands & more" aria-describedby="search-btn" required>
+                    <button class="btn" type="button" id="mobile-search-btn"><i class="bi bi-search"></i></button>
+                    <button class="btn" type="button" onclick="startConverting()" id="mobile-voice-btn"><i class="bi bi-mic-fill"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="voice-search-container" style="display: none;">
+        <div class="voice-search-div">
+            <div class="voice-grid">
+                <div class="voice-icon">
+                    <div class="voice-btn"><i class="bi bi-mic-fill"></i></div>
+                </div>
+                <div class="voice-search-text" onclick="startConverting()"> We are Listening</div>
+            </div>
+        </div>
+    </div>
+    <div class="current-location-container">
+        <div class="current-location"> <span class="close-current-location" onclick="closeCurrentlocation()"><i class="bi bi-x-lg"></i> </span>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="search-container">
+                            <div class="row justify-content-center">
+                                <div class="col-auto current-location-title align-self-center">Search by pincode</div>
+                                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 current-location-search-selction">
+                                    <div class="input-box"> <input type="number" minlength="6" id="pincodefinddata" name="pincodefinddata" class="form-control search-pincode-inputBox pincodesearch" maxlength="7" placeholder="Search your pincode"> <button id="selectMyLocation1" type="button" class="search-btn"><span class="bi bi-search"></span> </button></div>
+                                    <p id="pincode-error" style="display:none">Your pincode is not serviceable for delivery</p>
+                                </div>
+                                <div class="col-12 col-md-auto col-lg-auto align-self-center">
+                                    <div class="or font-size-14">OR</div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12"> <button onclick="getLocation()" class="btn btn-primary-dark-w"><i class="bi bi-geo-alt"></i>&nbsp;&nbsp;Use Current Location </button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <h6 class="location-heading">All Cities</h6>
+                    </div>
+                    <div class="col-md-10">
+                        <ul class="store-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="current-location-selected">
+            <div class="container text-end">
+                <div class="btn-section-current-location" onclick="closeCurrentlocation()">  <input class="btn btn-current-location" value="Kolkata" readonly /> </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $('.logout_btn').click(function() {
+        
+       
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo $asset_url?>web_action/logout.php', // Replace with the correct path to your server-side script
+            data: { logout_btn: true },
+            success: function(response) {
+                // Optionally, handle the response from the server if needed
+                // For example, you can redirect the user to a login page
+                window.location.href = '<?php echo $asset_url?>index.php';
+            }
+        });
+    });
+    
+    </script>

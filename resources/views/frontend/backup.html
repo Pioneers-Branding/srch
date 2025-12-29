@@ -1,0 +1,263 @@
+@extends('frontend.layouts.app')
+@section('title') {{ 'Coaching' }} @endsection
+<style>
+   .card {
+   border-radius: 10px;
+   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+   padding: 20px;
+   margin: 10px;
+   }
+   .star-rating {
+   color: #f0c419;
+   font-size: 1.5rem;
+   }
+   .register-btn {
+   background-color: #ffb300;
+   color: #fff;
+   border-radius: 20px;
+   padding: 10px 20px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   width: 100%;
+   margin-top:5%;
+   margin-bottom:7%;
+   }
+</style>
+@section('content')
+<section class="top-h">
+   <div class="w-100 pt-100 black-layer opc5 pb-80 position-relative">
+      <div class="fixed-bg" style="background-image: url(assets/images/pag-top-bg.jpg);"></div>
+      <div class="container">
+         <div class="page-title-wrap text-center w-100">
+            <div class="page-title-inner d-inline-block">
+               <h1 class="mb-0">Coaching</h1>
+               <ol class="breadcrumb mb-0 justify-content-center">
+                  <li class="breadcrumb-item"><a href="index.html" title="">Home</a></li>
+                  <li class="breadcrumb-item active">Coaching</li>
+               </ol>
+            </div>
+         </div>
+         <!-- Page Title Wrap -->
+      </div>
+   </div>
+</section>
+<div class="container mt-5">
+   <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+         <div class="carousel-item active">
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="card">
+                     <div class="star-rating">★</div>
+                     <h3>FRESHERS</h3>
+                     <p>
+                        Introduce the basics of chess, focusing on board setup, piece movements, and the fundamentals of gameplay. Every grandmaster was once a beginner.
+                        Your journey starts with the first move—embrace it!
+                     </p>
+                     <strong>Chess Board and Pieces:</strong> 
+                     <ul>
+                        <li>Introduction to the chessboard layout (files, ranks, and diagonals) </li>
+                        <li>Names and movements of each piece: pawn, rook, knight, bishop, queen, and king</li>
+                        <li>Intrduction of Chess Board (Files & Ranks)</li>
+                        <li>Value of Pieces, Chess Notation</li>
+                     </ul>
+                     <br>
+                     <strong>Basic Rules of Chess:</strong>
+                     <ul>
+                        <li>Piece values and understanding captures</li>
+                        <li>Legal moves, castling, en passant, and pawn promotion </li>
+                        <li> Understanding check, checkmate, and stalemate</li>
+                     </ul>
+                     <br><strong>Game Basics:</strong>
+                     <ul>
+                        <li>Setting up the board</li>
+                        <li>Basics of turns and move selection  </li>
+                        <li> Playing practice games to apply basic rules </li>
+                        <li> Capture, Attack & Defense </li>
+                     </ul>
+                     <br><strong>Puzzles:</strong>
+                     <ul>
+                        <li>Mate in 1 Move.</li>
+                     </ul>
+                     <br><strong>Endgame Basics:</strong> 
+                     <ul>
+                        <li>Basic kingpawn Ending</li>
+                        <li> Checkmate with 2 Rooks</li>
+                     </ul>
+                     <a href="#" class="register-btn">Pay Now</a>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="card">
+                     <div class="star-rating">★★</div>
+                     <h3>BEGINNERS -</h3>
+                     <p>Build on foundational skills with basic tactics and an introduction to strategic principles. Chess is not just a game of pieces, but of possibilities.
+                        Every move you make reveals a new path.
+                     </p>
+                     <strong>Opening Principles:</strong>
+                     <ul>
+                        <li>Control of the center</li>
+                        <li>Developing pieces effectively  </li>
+                        <li> Early king safety and castling </li>
+                     </ul>
+                     <br><strong>Basic Tactics and Patterns:</strong>
+                     <ul>
+                        <li> Recognizing threats and simple captures </li>
+                        <li>Basic tactics: pins, forks, skewers, and discovered attacks </li>
+                        <li> Introduction to simple combinations </li>
+                        <li> Types of Stalemates</li>
+                     </ul>
+                     <br><strong>Endgame Basics:</strong>
+                     <ul>
+                        <li>Understanding checkmating patterns with major pieces (e.g., king + queen vs. king, king + rook vs. king) </li>
+                        <li>Basic pawn endings (king and pawn vs. king)</li>
+                     </ul>
+                     <br><strong>Practical Play:</strong>
+                     <ul>
+                        <li>Playing guided games with feedback on mistakes</li>
+                        <li>Simple exercises to reinforce learned concepts </li>
+                     </ul>
+                     <strong>Openings Development:</strong>
+                     <ul>
+                        <li>  Fundamental opening repertoires for white and black (e.g., Italian Game, Sicilian Defense basics)</li>
+                        <li>  Development and tempo in the opening phase</li>
+                        <li>  Capturing the Hanging Piece/Pawn</li>
+                     </ul>
+                     <a href="#" class="register-btn">Pay Now</a>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="card">
+                     <div class="star-rating">★★★</div>
+                     <h3>ADVANCED BEGINNERS - 1000</h3>
+                     <p>Strengthen tactical skills and introduce basic positional concepts.
+                        The beauty of chess lies in thinking beyond the obvious. Push your limits, and the board will open up to you.
+                     </p>
+                     <strong>Openings Development:</strong>
+                     <ul>
+                        <li>  Fundamental opening repertoires for white and black (e.g., Italian Game, Sicilian Defense basics)</li>
+                        <li>  Development and tempo in the opening phase</li>
+                        <li>  Capturing the Hanging Piece/Pawn</li>
+                     </ul>
+                     <br><strong>Intermediate Tactics:</strong>
+                     <ul>
+                        <li>  Double attacks and defensive tactics</li>
+                        <li>  Advanced pins, skewers, and discovered attacks</li>
+                        <li>  Back-rank tactics and threats on open files</li>
+                        <li>  Deflection, Windmill, Back Rank weakness, etc.</li>
+                     </ul>
+                     <br><strong>Positional Play:</strong>
+                     <ul>
+                        <li>  Understanding weak squares and pawn structure</li>
+                        <li>  Basics of piece activity and coordination</li>
+                        <li>  Simple planning concepts and improving piece placement</li>
+                     </ul>
+                     <br><strong>Endgame Development:</strong>
+                     <ul>
+                     <li>  Rook and pawn endgames (basic ideas of the Lucena and Philidor positions)</li>
+                     <li>  Opposition in pawn endgames</li>
+                     <li>  King activity in endgames</li>
+                     <ul>
+                     <a href="#" class="register-btn">Pay Now</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="carousel-item active">
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="card">
+                     <div class="star-rating">★</div>
+                     <h3>INTERMEDIATE -3000</h3>
+                     <p>
+                        Develop strategic thinking, positional understanding, and advanced tactics.
+                        Strength in chess comes from perseverance; the greatest moves often arise from the toughest challenges.
+                     </p>
+                     <strong>Opening Repertoire Expansion:</strong>
+                     <ul>
+                        <li>  Deepening understanding of common openings (e.g., Ruy Lopez, Sicilian Defense variations, Queen’s Gambit)</li>
+                        <li>  Principles of opening preparation and responding to opponent’s moves</li>
+                     </ul>
+                     <br><strong>Advanced Tactics:</strong>
+                     <ul>
+                        <li>  Complex tactics and combinations</li>
+                        <li>  Removing the defender, deflection, decoy tactics</li>
+                        <li>  Complex examples of pins, skewers, and forks</li>
+                     </ul>
+                     <br><strong>Positional Concepts:</strong>
+                     <ul>
+                        <li>  Advanced pawn structures (isolated pawns, backward pawns, doubled pawns)</li>
+                        <li>  Outposts and weak squares</li>
+                        <li>  Good vs. bad bishops, knights vs. bishops dynamics</li>
+                     </ul>
+                     <br><strong>Planning and Strategy:</strong>
+                     <ul>
+                        <li>  Basics of formulating a plan based on the position</li>
+                        <li>  Recognizing imbalances and exploiting them</li>
+                        <li>  Transitioning between opening, middlegame, and endgame phases</li>
+                     </ul>
+                     <br><strong>Endgame Strategy:</strong>
+                     <ul>
+                        <li>  More advanced rook endgames and concepts (e.g., the Vancura position)</li>
+                        <li>  Knight and bishop endgames</li>
+                        <li>  Opposition, triangulation, and zugzwang in endgames</li>
+                     </ul>
+                     <a href="#" class="register-btn">Pay Now</a>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="card">
+                     <div class="star-rating">★★</div>
+                     <h3>ADVANCED - 5000</h3>
+                     <p>Mastery of chess principles with a focus on advanced strategy, in-depth analysis, and competitive preparation. Chess mastery is a blend of vision and precision.
+                        The board is yours to conquer—one brilliant move at a time.
+                     </p>
+                     <strong>Opening Mastery:</strong>
+                     <ul>
+                        <li>  Deep study of individual openings with multiple variations (e.g., Najdorf, King’s Indian Defense, English Opening)</li>
+                        <li>  Opening theory updates and understanding opening novelties</li>
+                        <li>  Preparing for specific opponents in tournaments</li>
+                     </ul>
+                     <br><strong>Advanced Positional Play:</strong>
+                     <ul>
+                        <li>  Identifying and exploiting weaknesses in complex positions</li>
+                        <li>  Positional sacrifices for long-term compensation</li>
+                     </ul>
+                     <br><strong>In-Depth Strategy and Planning:</strong>
+                     <ul>
+                        <li>  Long-term strategic planning based on specific positions</li>
+                        <li>  Recognizing and exploiting imbalances</li>
+                        <li>  Understanding prophylaxis (anticipating opponent’s plans)</li>
+                     </ul>
+                     <br><strong>Complex Endgames:</strong>
+                     <ul>
+                        <li>  Mastering endgames with multiple pieces (e.g., rook and pawn vs. rook, opposite-colored bishop endings)</li>
+                        <li>  Understanding fortress positions and drawing techniques</li>
+                        <li>  Advanced king and pawn endgames</li>
+                     </ul>
+                     <br><strong>Tournament and Game Analysis:</strong>
+                     <ul>
+                        <li>  Analyzing own games and classic master games for improvement</li>
+                        <li>  Practical exercises in calculation and visualization</li>
+                        <li>  Psychological preparation for tournaments and maintaining focus during long games</li>
+                     </ul>
+                     <a href="#" class="register-btn">pay Now</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- Additional slides can be added here for more levels -->
+      </div>
+      <a class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+      </a>
+   </div>
+</div>
+@endsection
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>

@@ -1,0 +1,11 @@
+{
+    "name": "ReelVideo",
+    "alias": "reelvideo",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ReelVideo\\Providers\\ReelVideoServiceProvider"
+    ],
+    "files": []
+}

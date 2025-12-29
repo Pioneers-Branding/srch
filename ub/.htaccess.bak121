@@ -1,0 +1,63 @@
+<IfModule mod_rewrite.c>
+# enable rewrite engine
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+Header always set Content-Security-Policy "upgrade-insecure-requests;"
+
+# if requested url does not exist pass it as path info to index.php
+RewriteRule ^$ index.php?/ [QSA,L]
+RewriteRule ^login/?$ login.php [L,QSA]
+RewriteRule ^register/?$ register.php [L,QSA]
+RewriteRule ^checkout/?$ checkout.php [L,QSA]
+RewriteRule ^checkout_m/?$ checkout_m.php [L,QSA]
+RewriteRule ^order/?$ order.php [L,QSA]
+RewriteRule ^orders/?$ orders.php [L,QSA]
+RewriteRule ^order_new/?$ order_new.php [L,QSA]
+RewriteRule ^contact/?$ contact.php [L,QSA]
+RewriteRule ^forgetPassword/?$ forgetPassword.php [L,QSA]
+RewriteRule ^contact/?$ contact.php [L,QSA]
+RewriteRule ^thank-you/?$ thank-you.php [L,QSA]
+RewriteRule ^search/?$ search.php [L,QSA]
+RewriteRule ^product-filter/?$ product-filter.php [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule (.*) all-page.php?/$1 [QSA,L]
+</IfModule>
+
+# BEGIN cPanel-generated php ini directives, do not edit
+# Manual editing of this file may result in unexpected behavior.
+# To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+# For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+<IfModule php7_module>
+   php_flag display_errors Off
+   php_value max_execution_time 3000
+   php_value max_input_time 3000
+   php_value max_input_vars 3000
+   php_value memory_limit 1025M
+   php_value post_max_size 1025M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/var/cpanel/php/sessions/ea-php73"
+   php_value upload_max_filesize 1025M
+   php_flag zlib.output_compression Off
+</IfModule>
+<IfModule lsapi_module>
+   php_flag display_errors Off
+   php_value max_execution_time 3000
+   php_value max_input_time 3000
+   php_value max_input_vars 3000
+   php_value memory_limit 1025M
+   php_value post_max_size 1025M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/var/cpanel/php/sessions/ea-php73"
+   php_value upload_max_filesize 1025M
+   php_flag zlib.output_compression Off
+</IfModule>
+# END cPanel-generated php ini directives, do not edit
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php73” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php73___lsphp .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

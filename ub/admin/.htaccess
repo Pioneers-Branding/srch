@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# Block xmlrpc.php access
+<Files xmlrpc.php>
+Order Deny,Allow
+Deny from all
+</Files>
+

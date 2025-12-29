@@ -1,0 +1,7 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+www.greateasternretail.com	TRUE	/	FALSE	1999999999	token	KC2AWE42QONVKUL96Z9D5ZOTQXDJDT2XP93LY7QD7L0CM1J8JWMIC2IVGRDY
+www.greateasternretail.com	TRUE	/	FALSE	1999999999	csrftoken	RJ7LUe5EtzBQ5sE9LlDNRCVfEtFvGTrFctWRk13j8LY70TdYGJfyHNdo1tYw1lHZ
+www.greateasternretail.com	TRUE	/	FALSE	1999999999	sessionid	ogq3glameq8j7ai3oxfg5872ccujtrrq
+www.greateasternretail.com	TRUE	/	FALSE	1999999999	SameSite	Lax
+
