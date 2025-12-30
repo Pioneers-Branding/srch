@@ -36,7 +36,10 @@
     </style>
 
 @extends('frontend.layouts.app')
-@section('title') {{ 'Testimonials' }} @endsection
+@section('title', 'Chess Academy Testimonials | Student Reviews – SR Chess Academy')
+@section('keywords', 'Chess academy testimonials')
+@section('description', 'Read real student reviews and testimonials for SR Chess Academy’s chess coaching in Delhi. Discover success stories & experiences from learners.')
+
 @section('content')
 <!--<section class="top-h">-->
 <!--   <div class="w-100 pt-100 black-layer opc5 pb-80 position-relative">-->

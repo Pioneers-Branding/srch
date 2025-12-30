@@ -6,6 +6,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
+    <meta name="description" content="@yield('description')">
+    <meta name="keywords" content="@yield('keywords')">
+
     <link rel="shortcut icon" href="{{ asset('frontend/assets/srcamain/images/logo-black03.png') }}">
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('frontend/assets/srcamain/images/logo-black03.png') }}">
 
@@ -23,11 +26,12 @@
    
     <!-- Plugin CSS -->
     
-    <meta property="og:title" content="SR Chess Academy" />
-<meta property="og:description" content="Boost focus, team-building, and creativity with our professional chess workshops for corporate teams." />
-<meta property="og:image" content="{{ asset('frontend/assets/srcamain/images/logo-black03.png') }}" />
-<!--<meta property="og:url" content="https://www.srchessacademy.com/service/corporate-and-school-workshops/corporate-workshop" />-->
-<meta property="og:type" content="website" />
+    <meta property="og:title" content="@yield('title')" />
+    <meta property="og:description" content="@yield('description')" />
+    <meta property="og:keywords" content="@yield('keywords')" />
+    <meta property="og:image" content="{{ asset('frontend/assets/srcamain/images/logo-black03.png') }}" />
+    <!--<meta property="og:url" content="https://www.srchessacademy.com/service/corporate-and-school-workshops/corporate-workshop" />-->
+    <meta property="og:type" content="website" />
 
     
     <style>

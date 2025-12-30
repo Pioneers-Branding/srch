@@ -10,7 +10,9 @@
 
 
 @extends('frontend.layouts.app')
-@section('title') {{ 'gallery' }} @endsection
+@section('title', 'Chess Gallery | Coaching, Events & Moments – SR Chess Academy')
+@section('description', 'Browse our Chess Gallery featuring coaching sessions, tournament action, student highlights & memorable moments from SR Chess Academy.')
+
 
 @section('content')
 

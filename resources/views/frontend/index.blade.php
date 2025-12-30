@@ -4,7 +4,11 @@
 
    <!-- Font Awesome for icons -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dyyrdA7qQOS0m5FGT+zl5IL5sNmBRHo0b4ICZYh7BgW8w35Cu1FU9EYkmD59dsNFZEm2ts77a24EMmH9dvKD6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-@extends('frontend.layouts.app') @section('title') {{ 'Home' }} @endsection 
+@extends('frontend.layouts.app') 
+@section('title', 'SRCA | Best Chess Classes in Delhi')
+@section('keywords', 'Chess Classes, Chess for beginners, Delhi Chess Classes')
+@section('description', 'Best Chess Classes in Delhi at SRCA. Expert coaches, personalized training for all levels, and engaging tournaments. Enroll today to master the game!')
+
 @section('content') 
 <style>
    .social-media-icons {

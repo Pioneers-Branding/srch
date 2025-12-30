@@ -101,7 +101,7 @@
         data: 'last_name',
         name: 'last_name',
         title: "{{ __('customer.lbl_last_name') }}"
-      },
+      },      
       {
         data: 'email',
         name: 'email',

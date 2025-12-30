@@ -1,5 +1,7 @@
 @extends('frontend.layouts.app')
-@section('title') {{ 'Coaches' }} @endsection
+@section('title', 'Chess Coaches in Delhi | Professional Chess Trainers – SR Chess Academy')
+@section('description', 'Chess Coaches in Delhi at SR Chess Academy. Learn from GMs, IMs & FIDE-certified chess trainers with proven results.')
+
 @section('content')
 
   <!--<section class="top-h">-->

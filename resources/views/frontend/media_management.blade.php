@@ -1,5 +1,8 @@
 @extends('frontend.layouts.app')
-@section('title') {{ 'Social Media Management' }} @endsection
+@section('title', 'Social Media Management Services | Grow Your Brand – SR Chess Academy')
+@section('keywords', 'social media management, social media management services, social media marketing for chess academies')
+@section('description', 'Professional social media management services for chess academies & coaches. Content creation, Instagram growth & lead generation.')
+
 @section('content')
 
 <style>

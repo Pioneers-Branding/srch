@@ -1,5 +1,8 @@
 @extends('frontend.layouts.app')
-@section('title') {{ 'Product List' }} @endsection
+@section('title', 'Chess Products & Gear – Chess Sets, Boards & Accessories')
+@section('keywords', 'chess products, chess sets & accessories, chess training tools')
+@section('description', 'Shop premium chess products including chess sets, boards, clocks & accessories. Perfect for beginners to advanced players.')
+
 @section('content')
 <style>
     .prod-img > a.thm-bg:hover{

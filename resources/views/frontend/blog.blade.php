@@ -1,5 +1,8 @@
 @extends('frontend.layouts.app')
-@section('title') {{ 'blog' }} @endsection
+@section('title', 'Chess Blog | Chess Tips & Strategies – SR Chess Academy')
+@section('keywords', 'Chess Blogs')
+@section('description', 'Explore chess tips, strategies, training insights & stories in our Chess Blog. Helpful articles for beginners to advanced players.')
+
 
 @section('content')
 

@@ -1,5 +1,8 @@
 @extends('frontend.layouts.app')
-@section('title') {{ 'chess-consultation' }} @endsection
+@section('title', 'Chess Consultation | Personalized Chess Guidance – SR Chess Academy')
+@section('keywords', 'chess consultation, chess coaching consultation, chess training consultation')
+@section('description', 'Book a personalized chess consultation with expert coaches at SR Chess Academy. Get the right guidance, assessment & training roadmap.')
+
 @section('content')
 <style>
         .row {

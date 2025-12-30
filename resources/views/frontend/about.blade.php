@@ -2,7 +2,10 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 @extends('frontend.layouts.app')
-@section('title') {{ 'About Us' }} @endsection
+@section('title', 'About SR Chess Academy | Chess Academy in Delhi')
+@section('keywords', 'Chess academy in Delhi, About SR Chess Academy, Chess coaching experts in Delhi')
+@section('description', 'A leading chess academy in Delhi with professional coaches & proven training methods for all ages.')
+
 @section('content')
 <style>
 .special-box {

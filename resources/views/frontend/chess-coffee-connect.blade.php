@@ -1,5 +1,8 @@
 @extends('frontend.layouts.app')
-@section('title') {{ 'chess-coffee-connect' }} @endsection
+@section('title', 'Chess Coffee Connect')
+@section('keywords', 'Chess Coffee Connect')
+@section('description', 'Join Chess Coffee Connect, a fun social chess meetup event in Delhi. Network with players, enjoy games & coffee in community-driven gatherings.')
+
 @section('content')
     <style>
         .row {
@@ -454,7 +457,7 @@
                                         <br>So, bring your board (or use one of ours), grab a cup of coffee, and let’s create checkmate moments together! Follow us for updates on upcoming meet-ups, and join us in building Delhi’s chess culture, one coffee at a time.
                                         </p><br><br><br><br>
                                 </div>
-                            </div>
+                            </div>                            
                         </div>
                         
                     </div>
@@ -462,83 +465,6 @@
             </section>	
 		
 			
-			
-             <!-- Membership Section -->
-    <section class="mt-4 mb-3">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class='col-12'>
-                    <h3>Chess Coffee Connect Membership Fees</h3>
-                    <p>Join Chess Coffee Connect and become part of Delhi’s most exciting chess community! As a member, you’ll enjoy monthly Chess & Coffee Meet-ups, exclusive perks, and a chance to be part of a growing chess culture. Our membership options are designed to make it easy for everyone—whether you're a beginner, seasoned player, or just a coffee lover with a passion for the game.</p>
-                </div>
-                <div class="col-lg-8">
-                    <div class="membership-card">
-                        <div class="membership-header">
-                            <h3 class="h2 mb-3">Annual Membership</h3>
-                            <div class="price">₹1,499</div>
-                           
-                        </div>
-                        <div class="p-4">
-                            <div class="benefit-item">
-                                <i class="fas fa-gift benefit-icon"></i>
-                                <div>
-                                    <strong>First Meet-Up Free:</strong> Get a taste of our community with your first meet-up on the house!
-                                </div>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-users benefit-icon"></i>
-                                <div>
-                                    <strong>Monthly Social Meet-Up:</strong> A members-only event for networking, with fun chess variants and team tournaments to build camaraderie
-                                </div>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-store benefit-icon"></i>
-                                <div>
-                                    <strong>Marketplace for Chess Books, Related Products & Services:</strong> Promote and discover chess-related books, accessories, products and services within our community—a great opportunity to find or market items that enhance the chess experience!
-                                </div>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-percentage benefit-icon"></i>
-                                <div>
-                                    <strong>Exclusive Member Discounts:</strong> Reduced rates on chess supplies from SRCA, workshops, or chess coaching sessions.
-                                </div>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-chalkboard-teacher benefit-icon"></i>
-                                <div>
-                                    <strong>Free Quarterly Strategy Sessions:</strong> Access to quarterly online strategy sessions with SRCA coaches, focusing on game analysis, tactics, and improvement tips.
-                                </div>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-calendar-check benefit-icon"></i>
-                                <div>
-                                    <strong>Early Registration for Events:</strong> Priority sign-ups for popular game analysis, workshops, and special events.
-                                </div>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-user-friends benefit-icon"></i>
-                                <div>
-                                    <strong>Guest Passes:</strong> Invite a friend or family member to one Chess & Coffee meet-up per month to encourage community growth at a discount price of ₹499
-                                </div>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-coffee benefit-icon"></i>
-                                <div>
-                                    <strong>Discounts on Local Coffee Shops:</strong> Partner with nearby cafes to offer members a discount on coffee purchases during or after meet-ups.
-                                </div>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-chart-line benefit-icon"></i>
-                                <div>
-                                    <strong>Game Analysis Sessions:</strong> Free or discounted access to sessions where members can bring in recorded games to be analyzed by a FIDE certified coach or seasoned player.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Why Become a Member Section -->
     <section class="py-5" style="background:#FCD334"> 
@@ -580,7 +506,7 @@
         </div>
     </section>
 
-    <!-- Rules Section -->
+   <!-- Rules Section -->
     <section class="rules-section">
         <div class="container">
             <div class="section-header">
@@ -604,7 +530,9 @@
 
             <p><b>Growth Path</b>: Progress from Volunteer ➝ Community Lead ➝ Paid Event Manager. We grow with our people.</p>
 
-            <p><b>Impact Factor</b>: This is more than volunteer hours — you are shaping a culture where intellect meets lifestyle.</p>
+            <p><b>Impact Factor</b>: This is more than volunteer hours — you are shaping a culture where intellect meets lifestyle.</p><br>
+             <a class="thm-btn  brd-rd5 d-inline-block pad-btn position-relative overflow-hidden"  href="https://forms.gle/g2fPkUmf8foQ7tHz9" title="" style="background:#ffb000 !important">Register Here</a>
+            
         </div>
     </div>
 
@@ -622,22 +550,70 @@
                 <b>Hustler Pass</b> → ₹555 | 5 Events | 1-Month Access<br>
                 <b>Grandmaster Move</b> → ₹999 | Unlimited Café Events | 2-Month Access
             </p>
-
+ 
             <p><b>Perks You’ll Love</b>:</p><br>
             <p>
                 👉 ₹100 food voucher (where applicable)<br>
                 👉 Buddy Pass — bring a friend at 50% off<br>
                 👉 50% OFF Mega Rapid Events
-            </p>
+            </p><br>
+            
+            <a class="thm-btn  brd-rd5 d-inline-block pad-btn position-relative overflow-hidden mt-3"  href="https://forms.gle/f3dgRTUs1tJrjxsc8" title="" style="background:#ffb000 !important">Register Here</a>
 
-            <p>
-                <b>Register Here:</b><br>
-                <a href="https://forms.gle/f3dgRTUs1tJrjxsc8" target="_blank">
-                    https://forms.gle/f3dgRTUs1tJrjxsc8
-                </a>
-            </p>
+            <br><br><br><br>
         </div>
     </div>
+
+    <div class="col-md-6">
+        <div class="proced-box z1 brd-rd5 thm-bg position-relative w-100">
+            <h3 class="mb-0"><a>Etiquette & Sportsmanship</a></h3>          
+
+            <p><b>Respect Your Opponent</b> : Greet your opponent at the begining and end of each gam. Chess coffee connect is build on mutual respect and camaraderie.</p>
+            <p><b>Stay Focused, Stay Quiet</b> : Avoid discussing moves or giving advice during gameplay.</p>
+            <p><b>Keep It Clean</b> : Handle chess pieces and clocks with care, and clean up coffee cups or belongings before leaving.</p>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="proced-box z1 brd-rd5 thm-bg position-relative w-100">
+            <h3 class="mb-0"><a>General Community Guidelines</a></h3>
+            <p><b>Be Punctual</b> : Arrive on time for scheduled tournaments and events. Late arrivals may forfeit their match.</p>
+            <p><b>No Phones on the Table</b> : Keep phones silent and off the playing table to maintain fairness and focus.</p>
+            <p><b>Enjoy and Encourage</b> : Support new players, share insights, and embrace friendly competition.</p>    
+       <br><br><br> </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="proced-box z1 brd-rd5 thm-bg position-relative w-100">
+            <h3 class="mb-0"><a>Tournament Rules</a></h3>
+
+            <p>For our structured tournaments, we adhere to the official laws of chess set by the International Chess Federation (FIDE). Here are some important guidelines eo keep in mind.</p>
+
+            <p><b>Touch-Move Rule</b> : In rated rapid tournaments, if you touch a piece, you must move it (if legally possible).</p>
+            <p><b>Clock-Move Rule for Casual Blitz</b> : In casual blitz tournaments, the clock-move rule is followed to keep games light, fair, and enjoyable.</p>
+
+          
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="proced-box z1 brd-rd5 thm-bg position-relative w-100">
+            <h3 class="mb-0"><a>Dispute Resolution</a></h3>
+
+            <p>Fair play and mutual respect are at the heart of Chess Coffee Connect. In case of disagreements, please follow the steps below to resolve them smoothly.</p>
+
+            <p><b>How to Handle Disputes</b>:</p>
+
+            <p><b>Resolve Disputes Directly</b> : Players are encouraged to first resolve misunderstandings calmly with each other.</p>
+            <p><b>Arbiter Assistance</b> : If an agreement cannot be reached, pause the clock and raise your hand for assistance.</p>
+     
+        
+        </div>
+    </div>
+
+
+
+
 
 </div>
 

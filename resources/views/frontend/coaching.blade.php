@@ -1,5 +1,8 @@
 @extends('frontend.layouts.app')
-@section('title') {{ 'Coaching' }} @endsection
+@section('title', 'Chess Coaching Courses in Delhi | Beginner to Advanced – SR Chess Academy')
+@section('keywords', 'chess coaching courses, chess coaching courses in Delhi')
+@section('description', 'Join structured chess coaching courses in Delhi for beginners, intermediate & advanced players. Learn from expert coaches with proven training methods.')
+
 <style>
    .card {
    border-radius: 10px;
