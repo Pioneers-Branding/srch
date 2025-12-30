@@ -225,7 +225,7 @@ Route::get('/gallery', [HomeController::class, 'gallery'])->name('front.gallery'
 Route::get('/coaches_details', [HomeController::class, 'coaches_details'])->name('front.coaches_details');
 Route::post('/subscribe-newsletter', [HomeController::class, 'sendNewsletterEmail'])->name('subscribe.newsletter');
 Route::get('/social-media-management', [HomeController::class, 'socialMediaManagement'])->name('front.media_management');
-
+Route::get('/career', [HomeController::class, 'career'])->name('front.career');
 
 
 

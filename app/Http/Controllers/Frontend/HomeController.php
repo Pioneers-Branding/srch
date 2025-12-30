@@ -54,6 +54,12 @@ class HomeController extends Controller
     {
         return view('frontend.service-checkout');
     }
+
+    public function career()
+    {
+        return view('frontend.career');
+    }
+
     public function chess_trivia()
     {
         $quizes = ReelVideo::inRandomOrder()->limit(10)->get();
