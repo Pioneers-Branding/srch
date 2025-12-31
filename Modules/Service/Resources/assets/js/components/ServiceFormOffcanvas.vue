@@ -6,6 +6,7 @@
         <InputField class="col-md-12" type="text" :is-required="true" :label="$t('service_package.lbl_name')" placeholder="" v-model="name" :error-message="errors['name']" :error-messages="errorMessages['name']"></InputField>
         <InputField class="col-md-12" type="text" :is-required="true" :label="$t('service.lbl_duration')"  placeholder="" v-model="duration_min" :error-message="errors['duration_min']" :error-messages="errorMessages['duration_min']"></InputField>
         <InputField class="col-md-12" type="text" :is-required="true" :label="`${$t('service.lbl_default_price')} (${CURRENCY_SYMBOL})`"  placeholder="" v-model="default_price" :error-message="errors['default_price']" :error-messages="errorMessages['default_price']"></InputField>
+        <InputField class="col-md-12" type="date" :is-required="false" label="Event Date" placeholder="" v-model="event_date" :error-message="errors['event_date']" :error-messages="errorMessages['event_date']"></InputField>
 
 
         <div class="form-group">
@@ -201,6 +202,7 @@ const defaultData = () => {
     description: '',
     duration_min: '',
     default_price: '',
+    event_date: '',
     status: 1,
     is_feature:0,
     category_id: '',
@@ -220,6 +222,7 @@ const setFormData = (data) => {
       description: data.description,
       duration_min: data.duration_min,
       default_price: data.default_price,
+      event_date: data.event_date,
       status: data.status,
       is_feature:data.is_feature,
       category_id: data.category_id,
@@ -271,6 +274,7 @@ const { value: name } = useField('name')
 const { value: description } = useField('description')
 const { value: duration_min } = useField('duration_min')
 const { value: default_price } = useField('default_price')
+const { value: event_date } = useField('event_date')
 const { value: status } = useField('status')
 const { value: is_feature } = useField('is_feature')
 const { value: category_id } = useField('category_id')

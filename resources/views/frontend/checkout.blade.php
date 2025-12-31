@@ -11,6 +11,20 @@
                             <div class="col-lg-12">
                             
                            <!-- Display Service Name and Price -->
+                            <style>
+                                .checkout-form label { display: block !important; margin-bottom: 5px; font-weight: 600; }
+                                .checkout-form select, 
+                                .checkout-form input[type="text"],
+                                .checkout-form input[type="tel"],
+                                .checkout-form input[type="email"],
+                                .checkout-form input[type="date"] {
+                                    width: 100% !important;
+                                    padding: 10px !important;
+                                    border: 1px solid #ccc !important;
+                                    border-radius: 5px !important;
+                                    display: block !important;
+                                }
+                            </style>
                             <div class="service-details">
                                 <h2>{{ $service->name }}</h2>
                                 <p>Price: ₹<span id="total_price">{{ number_format($total_amount, 2) }}</span></p>
@@ -56,9 +70,46 @@
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-lg-6">
                                         <div class="field-box position-relative w-100">
+                                            <p class="checkout-form ">
+                                                <label>Gender&nbsp;<abbr class="required" title="required">*</abbr></label>
+                                                <select name="gender" id="gender" class="brd-rd5">
+                                                    <option value="">Select Gender</option>
+                                                    <option value="male" {{ (isset($user) && $user->gender == 'male') ? 'selected' : '' }}>Male</option>
+                                                    <option value="female" {{ (isset($user) && $user->gender == 'female') ? 'selected' : '' }}>Female</option>
+                                                    <option value="other" {{ (isset($user) && $user->gender == 'other') ? 'selected' : '' }}>Other</option>
+                                                </select>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-lg-6">
+                                        <div class="field-box position-relative w-100">
+                                            <p class="checkout-form ">
+                                                <label>Date of Birth&nbsp;<abbr class="required" title="required">*</abbr></label>
+                                                <input type="date" value="{{$user->date_of_birth ?? ''}}" class="brd-rd5" name="dob" id="dob">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-lg-6">
+                                        <div class="field-box position-relative w-100">
+                                            <p class="checkout-form ">
+                                                <label>FIDE id (if any)</label>
+                                                <input type="text" class="brd-rd5" name="fide_id" id="fide_id" placeholder="Enter FIDE identification number">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-lg-6">
+                                        <div class="field-box position-relative w-100">
+                                            <p class="checkout-form ">
+                                                <label>School/College/Workplace&nbsp;<abbr class="required" title="required">*</abbr></label>
+                                                <input type="text" class="brd-rd5" name="school_college_workplace" id="school_college_workplace" placeholder="Enter your school, college or workplace">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-lg-6">
+                                        <div class="field-box position-relative w-100">
                                             <p class="checkout-form">
                                                 <label>Street address&nbsp;<abbr class="required" title="required">*</abbr></label>
-                                                <input type="text" class="input-text" id="streetaddress" name="streetaddress" placeholder="House number and street name" value="">
+                                                <input type="text" class="brd-rd5" id="streetaddress" name="streetaddress" placeholder="House number and street name" value="">
                                             </p>
                                         </div>
                                     </div>
@@ -139,7 +190,7 @@
         let isValid = true;
 
         // Required fields list
-        let fields = ['#firstname', '#lastname', '#streetaddress', '#city', '#country', '#postcode', '#mobile', '#email'];
+        let fields = ['#firstname', '#lastname', '#gender', '#dob', '#school_college_workplace', '#streetaddress', '#city', '#country', '#postcode', '#mobile', '#email'];
 
         // Loop through fields and check if any is empty
         fields.forEach(function (selector) {
@@ -157,7 +208,7 @@
     }
 
     // Attach event listeners to input fields
-    $('input').on('keyup change', function () {
+    $('input, select').on('keyup change', function () {
         validateForm();
     });
 
@@ -176,6 +227,10 @@
             var formData = {
                  firstname: $('#firstname').val(),
                  lastname: $('#lastname').val(),
+                 gender: $('#gender').val(),
+                 dob: $('#dob').val(),
+                 fide_id: $('#fide_id').val(),
+                 school_college_workplace: $('#school_college_workplace').val(),
                  streetaddress: $('#streetaddress').val(),
                  city: $('#city').val(),
                  country: $('#country').val(),

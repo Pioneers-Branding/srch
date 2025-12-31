@@ -36,6 +36,20 @@
 
                             </div>
 
+                            <style>
+                                .checkout-form label { display: block !important; margin-bottom: 5px; font-weight: 600; }
+                                .checkout-form select, 
+                                .checkout-form input[type="text"],
+                                .checkout-form input[type="tel"],
+                                .checkout-form input[type="email"],
+                                .checkout-form input[type="date"] {
+                                    width: 100% !important;
+                                    padding: 10px !important;
+                                    border: 1px solid #ccc !important;
+                                    border-radius: 5px !important;
+                                    display: block !important;
+                                }
+                            </style>
                             <form name="checkout" method="post" class="checkout row" action="{{ route('store.checkout') }}">
                             <div class="comment-reply-wrap d-inline-block w-100">
                             <h3 class="position-relative">Billing details<span class="d-inline-block"></span></h3>
@@ -54,6 +68,43 @@
                                             <p class="checkout-form ">
                                                 <label>Last name&nbsp;<abbr class="required" title="required">*</abbr></label>
                                                 <input type="text" value="{{$user->last_name ?? ''}}" class="input-text" name="lastname" id="lastname" placeholder="" value="">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-lg-6">
+                                        <div class="field-box position-relative w-100">
+                                            <p class="checkout-form ">
+                                                <label>Gender&nbsp;<abbr class="required" title="required">*</abbr></label>
+                                                <select name="gender" id="gender" class="input-text brd-rd5">
+                                                    <option value="">Select Gender</option>
+                                                    <option value="male" {{ (isset($user) && $user->gender == 'male') ? 'selected' : '' }}>Male</option>
+                                                    <option value="female" {{ (isset($user) && $user->gender == 'female') ? 'selected' : '' }}>Female</option>
+                                                    <option value="other" {{ (isset($user) && $user->gender == 'other') ? 'selected' : '' }}>Other</option>
+                                                </select>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-lg-6">
+                                        <div class="field-box position-relative w-100">
+                                            <p class="checkout-form ">
+                                                <label>Date of Birth&nbsp;<abbr class="required" title="required">*</abbr></label>
+                                                <input type="date" value="{{$user->date_of_birth ?? ''}}" class="input-text" name="dob" id="dob" placeholder="">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-lg-6">
+                                        <div class="field-box position-relative w-100">
+                                            <p class="checkout-form ">
+                                                <label>FIDE id (if any)</label>
+                                                <input type="text" class="input-text" name="fide_id" id="fide_id" placeholder="Enter FIDE identification number">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-lg-6">
+                                        <div class="field-box position-relative w-100">
+                                            <p class="checkout-form ">
+                                                <label>School/College/Workplace&nbsp;<abbr class="required" title="required">*</abbr></label>
+                                                <input type="text" class="input-text" name="school_college_workplace" id="school_college_workplace" placeholder="Enter your school, college or workplace">
                                             </p>
                                         </div>
                                     </div>
@@ -147,6 +198,10 @@
             var formData = {
                  firstname: $('#firstname').val(),
                  lastname: $('#lastname').val(),
+                 gender: $('#gender').val(),
+                 dob: $('#dob').val(),
+                 fide_id: $('#fide_id').val(),
+                 school_college_workplace: $('#school_college_workplace').val(),
                  streetaddress: $('#streetaddress').val(),
                  city: $('#city').val(),
                  country: $('#country').val(),
@@ -154,8 +209,6 @@
                  mobile: $('#mobile').val(),
                  email: $('#email').val(),
                  '_token': csrf_token,
-                 
-
             };
         
             // $.ajax({

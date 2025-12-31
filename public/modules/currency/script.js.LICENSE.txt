@@ -1,23 +1,31 @@
 /*!
-  * devtools-if v9.2.2
-  * (c) 2022 kazuya kawaguchi
+  * shared v9.14.1
+  * (c) 2024 kazuya kawaguchi
   * Released under the MIT License.
   */
 
 /*!
-  * message-compiler v9.2.2
-  * (c) 2022 kazuya kawaguchi
-  * Released under the MIT License.
-  */
+ * pinia v2.2.4
+ * (c) 2024 Eduardo San Martin Morote
+ * @license MIT
+ */
 
-/*!
-  * shared v9.2.2
-  * (c) 2022 kazuya kawaguchi
-  * Released under the MIT License.
-  */
+/*! #__NO_SIDE_EFFECTS__ */
 
-/*!
-  * vue-i18n v9.2.2
-  * (c) 2022 kazuya kawaguchi
-  * Released under the MIT License.
-  */
+/**
+* @vue/runtime-core v3.5.12
+* (c) 2018-present Yuxi (Evan) You and Vue contributors
+* @license MIT
+**/
+
+/**
+* @vue/runtime-dom v3.5.12
+* (c) 2018-present Yuxi (Evan) You and Vue contributors
+* @license MIT
+**/
+
+/**
+* @vue/shared v3.5.12
+* (c) 2018-present Yuxi (Evan) You and Vue contributors
+* @license MIT
+**/

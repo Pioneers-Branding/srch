@@ -19,7 +19,7 @@ class Service extends BaseModel
 
     protected $table = 'services';
 
-    protected $fillable = ['slug', 'name', 'description', 'duration_min', 'default_price', 'category_id', 'sub_category_id', 'child_category_id', 'feature_image', 'status' , 'is_feature'];
+    protected $fillable = ['slug', 'name', 'description', 'duration_min', 'default_price', 'category_id', 'sub_category_id', 'child_category_id', 'feature_image', 'status', 'is_feature', 'event_date'];
 
     const CUSTOM_FIELD_MODEL = 'Modules\Service\Models\Service';
 
@@ -101,5 +101,17 @@ class Service extends BaseModel
     public function scopeActive($query)
     {
         return $query->where('status', 1);
+    }
+
+    public function isEventPassed()
+    {
+        if (!$this->event_date) {
+            return false;
+        }
+
+        $eventDate = \Carbon\Carbon::parse($this->event_date);
+        
+        // If event date is today or in the future, it's not passed
+        return $eventDate->isPast() && !$eventDate->isToday();
     }
 }

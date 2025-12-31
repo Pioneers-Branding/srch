@@ -125,7 +125,11 @@
                                  <!-- <h2>{{ $service->duration_min }}</h2>-->
                                  <a href="{{ route('front.contact') }}" class="checkout-btn" style="margin-bottom:10px">Enquire Now</a>
                                 
-                                <a href="{{ route('front.checkout', ['id' => Crypt::encryptString($service->id)]) }}" class="checkout-btn">Checkout</a>
+                                @if($service->isEventPassed())
+                                    <button class="checkout-btn" style="background-color: #d1d1d1; color: #7a7a7a; cursor: not-allowed; border: 1px solid #bfbfbf; padding: 12px; border-radius: 5px; width: 32%;" disabled>Event Passed</button>
+                                @else
+                                    <a href="{{ route('front.checkout', ['id' => Crypt::encryptString($service->id)]) }}" class="checkout-btn">Checkout</a>
+                                @endif
                                 
                             </div>
                         </div>
