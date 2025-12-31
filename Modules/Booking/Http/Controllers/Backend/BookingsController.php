@@ -283,13 +283,25 @@ class BookingsController extends Controller
                 return view('booking::backend.bookings.datatable.employee_id', compact('data'));
             })
             ->editColumn('service_amount', function ($data) {
-                // return '<span>'.\Currency::format($this->commissionBooking->grant_total ?? 0).'</span>';
-                return view('booking::backend.bookings.datatable.bookingtotal', compact('data'));
+                if ($data->commissionBooking) {
+                     return view('booking::backend.bookings.datatable.bookingtotal', compact('data'));
+                }
+                $amount = !empty($data->amount) ? $data->amount : ($data->services->first()->service_price ?? 0);
+                return '<span>'.\Currency::format($amount).'</span>';
             })
             ->editColumn('service_duration', function ($data) {
                 return '<span>'.$data->services->sum('duration_min').' Min</span>';
             })
             ->editColumn('services', function ($data) {
+                if ($data->services->isNotEmpty()) {
+                    return view('booking::backend.bookings.datatable.services', compact('data'));
+                }
+                if ($data->service_id) {
+                    $service = \Modules\Service\Models\Service::find($data->service_id);
+                    if ($service) {
+                        return '<small class="badge bg-primary">'.$service->name.'</small>';
+                    }
+                }
                 return view('booking::backend.bookings.datatable.services', compact('data'));
             })
             ->editColumn('start_date_time', function ($data) {

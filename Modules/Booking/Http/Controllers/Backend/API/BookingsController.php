@@ -54,6 +54,22 @@ class BookingsController extends Controller
         
         
         $booking = Booking::create($data);
+
+        if ($request->has('service_id')) {
+            $service = \Modules\Service\Models\Service::find($request->service_id);
+            if ($service) {
+                $serviceData = [
+                    [
+                        'service_id' => $service->id,
+                        'service_price' => $service->default_price,
+                        'quantity' => 1,
+                        'duration_min' => $service->duration_min ?? 30,
+                        'start_date_time' => $booking->start_date_time ?? now(),
+                    ]
+                ];
+                $this->updateBookingService($serviceData, $booking->id);
+            }
+        }
         
         // $this->updateBookingProduct($booking->id , auth()->user()->id);
 

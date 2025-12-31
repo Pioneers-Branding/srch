@@ -77,7 +77,7 @@ class Booking extends BaseModel
 
     public function service()
     {
-        return $this->hasMany(BookingService::class, 'id', 'booking_id')->with('employee');
+        return $this->hasMany(BookingService::class, 'booking_id', 'id')->with('employee');
     }
 
     public function mainServices()
@@ -116,7 +116,7 @@ class Booking extends BaseModel
         if (isset($branch_id)) {
             return $query->where('branch_id', $branch_id);
         } else {
-            return $query->whereNotNull('branch_id');
+            return $query;
         }
     }
 
