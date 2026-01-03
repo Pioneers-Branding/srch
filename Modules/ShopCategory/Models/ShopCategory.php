@@ -56,8 +56,13 @@ class ShopCategory extends BaseModel
     protected function getFeatureImageAttribute()
     {
         $media = $this->getFirstMediaUrl('feature_image');
+        $url = isset($media) && ! empty($media) ? $media : default_feature_image();
 
-        return isset($media) && ! empty($media) ? $media : default_feature_image();
+        if (filter_var($url, FILTER_VALIDATE_URL)) {
+            return parse_url($url, PHP_URL_PATH);
+        }
+
+        return $url;
     }
 
     public function scopeActive($query)

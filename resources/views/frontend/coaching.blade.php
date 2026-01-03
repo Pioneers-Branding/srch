@@ -544,7 +544,7 @@
             @foreach($services as $service)
                 <div class="row zigzag">
                     <div class="col-lg-4 image-container iie">
-                        <img src="{{ $service->feature_image ?? asset('images/default.png') }}" 
+                        <img src="{{ asset($service->feature_image) }}" 
                              alt="{{ $service->name }}">
                     </div>
                     <div class="col-lg-8 content-container dde">

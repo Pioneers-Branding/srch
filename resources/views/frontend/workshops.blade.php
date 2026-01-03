@@ -116,7 +116,7 @@
                         @foreach($services as $service)
                         <div class="row">
                             <div class="col-lg-6 image-container">
-                                <img src="{{ $service->feature_image }}" alt="{{ $service->name }}">
+                                <img src="{{ asset($service->feature_image) }}" alt="{{ $service->name }}">
                             </div>
                             <div class="col-lg-6 content-container">
                                 <h2>{{ $service->name }}</h2>

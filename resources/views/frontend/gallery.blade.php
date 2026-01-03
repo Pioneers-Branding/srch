@@ -71,12 +71,12 @@
                 <div class="gallery-box brd-rd10 position-relative overflow-hidden w-100">
                     <!-- Display the feature_image dynamically -->
                     <div class="cons">
-                                <img class="img-fluid w-100" src="{{ $page->feature_image }}" alt="Gallery Image {{ $page->id }}">  
+                                 <img class="img-fluid w-100" src="{{ asset($page->feature_image) }}" alt="Gallery Image {{ $page->id }}">  
                     </div>
           
                     <div class="gallery-info position-absolute">
                        
-                        <a class="d-inline-block" href=" {{ $page->feature_image }}" data-fancybox="gallery" title=""><i class="fas fa-plus"></i></a>
+                        <a class="d-inline-block" href="{{ asset($page->feature_image) }}" data-fancybox="gallery" title=""><i class="fas fa-plus"></i></a>
                     </div>
                      <h5 class="mt-4">{{ $page->name }}</h5>
                 </div>

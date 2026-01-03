@@ -349,7 +349,7 @@
    @foreach($services as $service)
    <div class="row" id="events">
       <div class="col-lg-6 image-container">
-         <img src="{{ $service->feature_image }}"
+         <img src="{{ asset($service->feature_image) }}"
             alt="{{ $service->name }}">
       </div>
       <div class="col-lg-6 content-container">

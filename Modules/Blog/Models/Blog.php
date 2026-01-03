@@ -61,15 +61,25 @@ class Blog extends BaseModel
     protected function getBlogImageAttribute()
     {
         $media = $this->getFirstMediaUrl('blog_image');
+        $url = isset($media) && ! empty($media) ? $media : default_feature_image();
 
-        return isset($media) && ! empty($media) ? $media : default_feature_image();
+        if (filter_var($url, FILTER_VALIDATE_URL)) {
+            return parse_url($url, PHP_URL_PATH);
+        }
+
+        return $url;
     }
 
     protected function getBannerAttribute()
     {
         $media = $this->getFirstMediaUrl('banner');
+        $url = isset($media) && ! empty($media) ? $media : default_feature_image();
 
-        return isset($media) && ! empty($media) ? $media : default_feature_image();
+        if (filter_var($url, FILTER_VALIDATE_URL)) {
+            return parse_url($url, PHP_URL_PATH);
+        }
+
+        return $url;
     }
 
     public function scopeActive($query)

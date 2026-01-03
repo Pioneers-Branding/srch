@@ -186,7 +186,7 @@
                         <span class="circle-two"></span>
                      </div>
                      <div class="image">
-                        <img src=" {{ $banner->feature_image }}" alt="{{ $banner->title ?? 'Banner Image' }}" />
+                        <img src="{{ asset($banner->feature_image) }}" alt="{{ $banner->title ?? 'Banner Image' }}" />
                      </div>
                   </div>
                </div>

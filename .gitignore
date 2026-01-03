@@ -5,7 +5,6 @@
 .env.php
 /node_modules
 /public/hot
-/public/storage
 /public/uploads
 /storage/*.key
 /vendor
@@ -24,7 +23,6 @@ composer.lock
 *.lock
 resources/lang/en.json
 
-.env
 updates.zip
 ecommerce.zip
 install.zip

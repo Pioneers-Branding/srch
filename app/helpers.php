@@ -244,7 +244,7 @@ if (! function_exists('app_name')) {
 if (! function_exists('default_user_avatar')) {
     function default_user_avatar()
     {
-        return asset(config('app.avatar_base_path').'avatar.png');
+        return '/'.config('app.avatar_base_path').'avatar.png';
     }
     function default_user_name()
     {
@@ -257,7 +257,7 @@ if (! function_exists('user_avatar')) {
         if (auth()->user()->profile_image ?? null) {
             return auth()->user()->profile_image;
         } else {
-            return asset(config('app.avatar_base_path').'avatar.png');
+            return '/'.config('app.avatar_base_path').'avatar.png';
         }
     }
 }
@@ -265,7 +265,7 @@ if (! function_exists('user_avatar')) {
 if (! function_exists('default_feature_image')) {
     function default_feature_image()
     {
-        return asset(config('app.image_path').'default.png');
+        return '/'.config('app.image_path').'default.png';
     }
 }
 

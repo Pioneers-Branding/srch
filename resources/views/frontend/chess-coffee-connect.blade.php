@@ -346,8 +346,8 @@
                  <div style="background:#f3f3f3;border-radius:10px;margin-bottom:20px">
                       <div class="row align-items-center flex-wrap-reverse" >
                         <!-- Image First (even on desktop) -->
-                        <div class="col-12 col-lg-6 image-containermb-lg-0 text-center">
-                            <img src="{{ $service->feature_image }}" alt="{{ $service->name }}" class="img-fluid w-100  mb-3 ">
+                        <div class="col-12 col-lg-6 image-container mb-lg-0 text-center">
+                            <img src="{{ asset($service->feature_image) }}" alt="{{ $service->name }}" class="img-fluid w-100  mb-3 ">
                         </div>
                 
                         <!-- Text Second -->

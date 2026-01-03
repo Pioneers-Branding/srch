@@ -138,8 +138,13 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     protected function getProfileImageAttribute()
     {
         $media = $this->getFirstMediaUrl('profile_image');
+        $url = isset($media) && ! empty($media) ? $media : default_user_avatar();
 
-        return isset($media) && ! empty($media) ? $media : asset(config('app.avatar_base_path').'avatar.png');
+        if (filter_var($url, FILTER_VALIDATE_URL)) {
+            return parse_url($url, PHP_URL_PATH);
+        }
+
+        return $url;
     }
 
     // Employee Relations
