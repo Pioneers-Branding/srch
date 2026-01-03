@@ -82,15 +82,14 @@
                <div class="col-md-6 col-sm-6 col-lg-3">
                   <div class="widget-box v2 w-100">
                      <div class="logo ff position-relative">
-                        <h1 class="mb-0">
-                           <a class="d-block" href="" title="Home">
-                           <img class="img-fluid" src="{{asset('frontend/assets/srcamain/images/logo-black03.png')}}" alt="Logo" style="filter: invert(1);">
-                           </a>
+                        <h1 class="mb-0">                           
+                           <img class="img-fluid" src="{{asset('frontend/assets/srcamain/images/logo-black03.png')}}" alt="Logo" style="filter: invert(1);">                           
+                           <img class="img-fluid" src="{{asset('frontend/assets/srcamain/images/ccc-logo-img.webp')}}" alt="Logo" style="height:100px">
                         </h1>
                      </div>
                      <!-- Logo --><br>
-                     <img src="{{asset('frontend/assets/srcamain/images/ccc-whatsapp.webp')}}" class="img-fluid" style="height:130px">
-                     <img src="{{asset('frontend/assets/srcamain/images/delhi-chess.webp')}}" class="img-fluid" style="height:130px">
+                     <img src="{{asset('frontend/assets/srcamain/images/ccc-whatsapp-1.png')}}" class="img-fluid" style="height:100px">
+                     <img src="{{asset('frontend/assets/srcamain/images/delhi-chess-1.png')}}" class="img-fluid" style="height:100px">
                      <h5 style="color:white;margin-top:10px">Join Our Whatsapp Community</h5>
                      <!--<a  href="https://chat.whatsapp.com/HzuE1Ee561A1gPaiPEUPgM" target-->
                      <!--   =-->
@@ -208,20 +207,20 @@
       <div class="bottom-bar v3 w-100 mt-3" style="background:#fcd739">
          <div class="container">
             <div class="bottom-bar-inner d-flex flex-wrap align-items-center justify-content-between w-100" >
-               <p class="mb-0"><a href="fa-horse-head " title="jocey"></a> - Copyright 2025 SRCA
+               <p class="mb-0"><a href="fa-horse-head " title="jocey"></a> - Copyright {{ date('Y') }} SRCA
                </p>
                <div class="social-links3 d-flex flex-wrap align-items-center">
                   <h3 class="mb-0">Follow Us</h3>
-                  <a class="brd-rd5 insta" href="https://www.instagram.com/srca_chessmentors/" title="Twtiiter"
+                  <a class="brd-rd5 insta" href="https://www.instagram.com/srca_chessmentors/" title="Instagram"
                      target="_blank"><i class="fab fa-instagram ic-m"></i></a>
                   <a class="brd-rd5 facebook-hvr"
                      href="https://www.facebook.com/profile.php?id=61559885038853" title="Facebook"
                      target="_blank"><i class="fab fa-facebook-f  ic-m"></i></a>
-                  <a class="brd-rd5 twitter-hvr" href="https://x.com/ChessShivi46473?t=T63X2qFgay2WqroAs7amsw&s=09" title="Youtube" target="_blank"><i class="fab fa-twitter ic-m"></i></a>
+                  <a class="brd-rd5 twitter-hvr" href="https://x.com/ChessShivi46473?t=T63X2qFgay2WqroAs7amsw&s=09" title="Twitter" target="_blank"><i class="fab fa-twitter ic-m"></i></a>
                   <a class="brd-rd5 linkedin-hvr"
                      href="https://www.linkedin.com/company/sr-chess-academy/posts/?feedView=all&viewAsMember=true"
                      title="Linkedin" target="_blank"><i class="fab fa-linkedin-in ic-m"></i></a>
-                     <a class="brd-rd5 linkedin-hvr"
+                     <a class="brd-rd5 youtube-hvr"
                      href="https://youtu.be/39wamHswcB8"
                      title="Youtube" target="_blank"><i class="fab fa-youtube ic-m"></i></a>
                   

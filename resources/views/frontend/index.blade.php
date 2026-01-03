@@ -150,6 +150,8 @@
       <a href="https://www.linkedin.com/company/sr-chess-academy/" target="_blank" class="social-icon linkedin tk mobile" aria-label="LinkedIn">
       <i class="fab fa-linkedin-in"></i>
       </a>
+      <a href="https://youtu.be/39wamHswcB8" target="_blank" class="social-icon youtube tk mobile" aria-label="YouTube">
+      <i class="fab fa-youtube"></i>
       </a>
       <a href="https://api.whatsapp.com/send?phone=917042854007" target="_blank" class="social-icon whatsapp tk mobile" aria-label="WhatsApp">
       <i class="fab fa-whatsapp"></i>

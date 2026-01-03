@@ -124,7 +124,7 @@
                                     <div class="col-md-6 col-sm-6 col-lg-6">
                                         <div class="field-box position-relative w-100">
                                             <p class="checkout-form">
-                                                <label>County&nbsp;<abbr class="required" title="required">*</abbr></label>
+                                                <label>Country&nbsp;<abbr class="required" title="required">*</abbr></label>
                                                 <input type="text" class="input-text" id="country" name="country" placeholder="" value="">
                                             </p>
                                         </div>

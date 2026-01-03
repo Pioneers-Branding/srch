@@ -319,6 +319,9 @@
                     <a href="https://linkedin.com" target="_blank" class="social-icon linkedin tk" aria-label="LinkedIn">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
+                    <a href="https://youtu.be/39wamHswcB8" target="_blank" class="social-icon youtube tk" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                     <a href="https://Whatsapp.com" target="_blank" class="social-icon whatsapp tk" aria-label="Whatsapp">
                         <i class="fab fa-whatsapp"></i>
                     </a>

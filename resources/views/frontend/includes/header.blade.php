@@ -61,24 +61,26 @@
         </div>
         
         <div class="social-media ">
-   <div class="social-media-icons ">
-      <a href="https://www.facebook.com/profile.php?id=61559885038853" target="_blank" class="social-icon facebook tk mobile" aria-label="Facebook">
-      <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="https://x.com/ChessShivi46473?t=T63X2qFgay2WqroAs7amsw&s=09" target="_blank" class="social-icon twitter tk mobile" aria-label="Twitter">
-      <i class="fab fa-twitter"></i>
-      </a>
-      <a href="https://www.instagram.com/srca_chessmentors/" target="_blank" class="social-icon instagram tk mobile" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.linkedin.com/company/sr-chess-academy/" target="_blank" class="social-icon linkedin tk mobile" aria-label="LinkedIn">
-      <i class="fab fa-linkedin-in"></i>
-      </a>
-      </a>
-      <a href="https://api.whatsapp.com/send?phone=917042854007" target="_blank" class="social-icon whatsapp tk mobile" aria-label="WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-      </a>
-   </div>
+         <div class="social-media-icons ">     
+            <a href="https://www.facebook.com/profile.php?id=61559885038853" target="_blank" class="social-icon facebook tk mobile" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://x.com/ChessShivi46473?t=T63X2qFgay2WqroAs7amsw&s=09" target="_blank" class="social-icon twitter tk mobile" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/srca_chessmentors/" target="_blank" class="social-icon instagram tk mobile" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/sr-chess-academy/" target="_blank" class="social-icon linkedin tk mobile" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+            </a>  
+            <a href="https://youtu.be/39wamHswcB8" target="_blank" class="social-icon youtube tk mobile" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=917042854007" target="_blank" class="social-icon whatsapp tk mobile" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+            </a>      
+         </div>
 </div>
  <!--Page Loader -->
 <?php
@@ -254,7 +256,7 @@
             class="fab fa-twitter"></i></a>
          <a class="facebook-hvr" href="https://www.facebook.com/" title="Facebook" target="_blank"><i
             class="fab fa-facebook-f"></i></a>
-         <a class="youtube-hvr" href="https://www.youtube.com/" title="Youtube" target="_blank"><i
+         <a class="youtube-hvr" href="https://youtu.be/39wamHswcB8" title="Youtube" target="_blank"><i
             class="fab fa-youtube"></i></a>
          <a class="linkedin-hvr" href="https://www.linkedin.com/" title="Linkedin" target="_blank"><i
             class="fab fa-linkedin-in"></i></a>
