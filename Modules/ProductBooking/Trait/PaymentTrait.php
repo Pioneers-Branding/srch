@@ -18,16 +18,12 @@ trait PaymentTrait
     public function getpayment_method($data, $booking_id)
     {
 
-        $data['booking_id'] = $booking_id;
+        $data['order_id'] = $booking_id;
         $data['transaction_type'] = $data['payment_method'];
-        $data['tip_amount'] = $data['tip'] ?? 0;
-        $data['tax_percentage'] = $data['taxes'];
 
-        $booking_transaction = BookingTransaction::create($data);
+        $booking_transaction = OrderTransaction::create($data);
 
-        $earning_data = $this->commissionData($booking_transaction);
-
-        $booking = Booking::where('id', $data['booking_id'])->first();
+        $booking = Order::where('id', $data['order_id'])->first();
 
         if (isset($earning_data['commission_data'])) {
             $booking->commission()->save(new CommissionEarning($earning_data['commission_data']));
@@ -43,7 +39,7 @@ trait PaymentTrait
 
         }
 
-        $total_amount = $this->getTotalAmount($data['booking_id'], $data['taxes'], $data['tip']);
+        $total_amount = $this->getTotalAmount($data['order_id'], $data['taxes'] ?? [], $data['tip'] ?? 0);
 
         $data['$total_amount'] = $total_amount;
 
@@ -57,7 +53,7 @@ trait PaymentTrait
 
                 $responseData = [
                     'status' => true,
-                    'booking_transaction_id' => $booking_transaction['id'],
+                    'order_transaction_id' => $booking_transaction['id'],
                     'total_amount' => $total_amount,
                     'currency' => $currency['currency_code'],
                     'payment_method' => $data['payment_method'],
@@ -99,8 +95,8 @@ trait PaymentTrait
     public function getTotalAmount($booking_id, $tax = [], $tip_amount = 0)
     {
 
-        $booking_services = BookingService::where('booking_id', $booking_id)->get();
-        $total_service_amount = $booking_services->sum('service_price');
+        $booking_services = OrderProduct::where('order_id', $booking_id)->get();
+        $total_service_amount = $booking_services->sum('price');
 
         $tax_amount = 0;
         if ($tax != '') {
@@ -125,14 +121,14 @@ trait PaymentTrait
     public function getcashpayments($data, $booking_transaction_id)
     {
 
-        BookingTransaction::where('id', $booking_transaction_id)->update(['external_transaction_id' => '', 'payment_status' => 1]);
-        Booking::where('id', $data['booking_id'])->update(['status' => 'completed']);
-        $queryData = Booking::with('services', 'user')->findOrFail($data['booking_id']);
+        OrderTransaction::where('id', $booking_transaction_id)->update(['external_transaction_id' => '', 'payment_status' => 1]);
+        Order::where('id', $data['order_id'])->update(['status' => 'completed']);
+        $queryData = Order::with('order_product', 'user')->findOrFail($data['order_id']);
         $this->sendNotificationOnBookingUpdate('complete_booking', $queryData);
         $responseData = [
             'message' => __('booking.payment_successfull'),
             'payment_method' => $data['payment_method'],
-            'data' => new BookingResource($queryData),
+            'data' => new OrderResource($queryData),
             'status' => true,
         ];
 
@@ -158,16 +154,16 @@ trait PaymentTrait
             $totalamount = $floatTotalAmount * 100;
             $api = new Api($key_id, $secret);
             $api->payment->fetch($data['response']['razorpay_payment_id'])->capture(['amount' => $totalamount, 'currency' => $currency]);
-            $data = BookingTransaction::where('id', $booking_transaction_id)->update(['external_transaction_id' => $data['response']['razorpay_payment_id'], 'payment_status' => 1]);
+            $data = OrderTransaction::where('id', $booking_transaction_id)->update(['external_transaction_id' => $data['response']['razorpay_payment_id'], 'payment_status' => 1]);
 
-            $booking_transaction = BookingTransaction::where('id', $booking_transaction_id)->first();
-            Booking::where('id', $booking_transaction['booking_id'])->update(['status' => 'completed']);
+            $booking_transaction = OrderTransaction::where('id', $booking_transaction_id)->first();
+            Order::where('id', $booking_transaction['order_id'])->update(['status' => 'completed']);
 
-            $queryData = Booking::with('services', 'user')->findOrFail($booking_transaction['booking_id']);
+            $queryData = Order::with('order_product', 'user')->findOrFail($booking_transaction['order_id']);
 
             $responseData = [
                 'message' => __('booking.payment_successfull'),
-                'booking' => new BookingResource($queryData),
+                'booking' => new OrderResource($queryData),
                 'status' => true,
             ];
 
@@ -300,20 +296,21 @@ trait PaymentTrait
     public function commissionData($data)
     {
 
-        $booking_id = $data['booking_id'];
+        $booking_id = $data['order_id'];
 
-        $booking_service = BookingService::where('booking_id', $booking_id)->first();
+        $booking_service = OrderProduct::where('order_id', $booking_id)->first();
 
-        $employee_id = $booking_service['employee_id'];
+        $employee_id = $booking_service['employee_id'] ?? null;
+        if(!$employee_id) return ['commission_data' => null, 'employee_id' => null];
 
         $employee = User::role('employee')->where('id', $employee_id)->with('commissions')->first();
 
         $commission_amount = 0;
 
         if (isset($employee->commissions)) {
-            $booking_services = BookingService::where('booking_id', $booking_id)->get();
+            $booking_services = OrderProduct::where('order_id', $booking_id)->get();
 
-            $total_service_amount = $booking_services->sum('service_price');
+            $total_service_amount = $booking_services->sum('price');
             $finalComissionAmount = 0;
             foreach ($employee->commissions as $key => $value) {
                 $commission_type = $value->mainCommission->commission_type;

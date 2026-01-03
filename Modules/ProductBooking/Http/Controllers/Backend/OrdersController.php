@@ -11,19 +11,22 @@ use Illuminate\Http\Request;
 use Modules\ProductBooking\Models\Order;
 use Modules\ProductBooking\Models\OrderProduct;
 use Modules\ProductBooking\Models\Cart;
-// use Modules\ProductBooking\Trait\OrderTrait;
+use Modules\ProductBooking\Trait\OrderTrait;
+use Modules\ProductBooking\Trait\PaymentTrait;
 use Modules\ProductBooking\Transformers\OrderDetailResource;
 use Modules\ProductBooking\Transformers\OrderListResource;
 use Modules\ProductBooking\Transformers\OrderResource;
 use Modules\Constant\Models\Constant;
 use Modules\ShopProduct\Models\ShopProduct;
 use Modules\Tax\Models\Tax;
+use Modules\ProductBooking\Models\OrderTransaction;
 use Yajra\DataTables\DataTables;
 
 class OrdersController extends Controller
 {
     // use Authorizable;
-    // use OrderTrait;
+    use OrderTrait;
+    use PaymentTrait;
 
     protected string $exportClass = '\App\Exports\OrdersExport';
 
@@ -60,7 +63,7 @@ class OrdersController extends Controller
 
         $date = $order->start_date_time ?? date('Y-m-d');
 
-        return view('Order::backend.bookings.index', compact('module_action', 'statusList', 'date'));
+        return view('productbooking::backend.orders.index', compact('module_action', 'statusList', 'date'));
     }
 
     public function statusList()
@@ -100,7 +103,7 @@ class OrdersController extends Controller
     {
         $date = $request->date;
 
-        $data = BookingService::with('booking', 'employee', 'service')
+        $data = OrderProduct::with('booking', 'employee', 'product')
             ->whereHas('booking', function ($q) use ($date) {
                 if (! empty($date)) {
                     $q->whereDate('start_date_time', $date);
@@ -128,7 +131,7 @@ class OrdersController extends Controller
                 'end' => customDate($endTime, 'Y-m-d H:i'),
                 'resourceId' => $value->employee_id,
                 'title' => $serviceName,
-                'titleHTML' => view('Order::backend.bookings.calender.event', compact('serviceName', 'customerName'))->render(),
+                'titleHTML' => view('productbooking::backend.orders.calender.event', compact('serviceName', 'customerName'))->render(),
                 'color' => $statusList[$value->booking->status]['color_hex'],
             ];
             $startTime = $endTime;
@@ -226,7 +229,7 @@ class OrdersController extends Controller
     {
         $module_name = $this->module_name;
 
-        $query = Order::query()->with('user', 'product', 'mainProducts');
+        $query = Order::query()->with('user', 'products', 'mainProducts');
 
         $filter = $request->filter;
 
@@ -298,7 +301,7 @@ class OrdersController extends Controller
 
 
             ->filterColumn('products', function ($query, $keyword) {
-                $query->whereHas('mainServices', function ($q) use ($keyword) {
+                $query->whereHas('mainProducts', function ($q) use ($keyword) {
                     $q->where('name', 'like', '%'.$keyword.'%');
                 });
             })
@@ -318,28 +321,28 @@ class OrdersController extends Controller
      *
      * @return Response
      */
-    public function store(BookingRequest $request)
+    public function store(Request $request)
     {
 
-        $orderData = $request->except(['services_id', 'employee_id', '_token']);
+        $orderData = $request->except(['products', '_token']);
 
         $orderData['status'] = 'confirmed';
 
         $order = Order::create($orderData);
 
-        $this->updateBookingService($request->services, $order->id);
+        $this->updateOrderProduct($request->products, $order->id, $order->user_id);
 
         $message = __('messages.create_form', ['form' => __('booking.singular_title')]);
 
         try {
-            $this->sendNotificationOnBookingUpdate('new_booking', $order);
+            // $this->sendNotificationOnBookingUpdate('new_booking', $order);
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
         }
 
-        $data = Order::with('services', 'user')->findOrFail($order->id);
+        $data = Order::with('order_product', 'user')->findOrFail($order->id);
 
-        return response()->json(['message' => $message, 'status' => true, 'data' => new BookingResource($data)], 200);
+        return response()->json(['message' => $message, 'status' => true, 'data' => new OrderResource($data)], 200);
     }
 
     /**
@@ -350,17 +353,17 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        $order = Order::with(['services', 'user'])->find($id);
+        $order = Order::with(['order_product', 'user'])->find($id);
 
         if (is_null($order)) {
             return response()->json(['message' => __('messages.booking_not_found')], 404);
         }
 
-        $orderTransaction = BookingTransaction::where('booking_id', $order->id)->where('payment_status', 1)->first();
+        $orderTransaction = OrderTransaction::where('order_id', $order->id)->where('payment_status', 1)->first();
 
         $data = [
-            'booking' => new BookingResource($order),
-            'services_total_amount' => $order->services->sum('service_price'),
+            'booking' => new OrderResource($order),
+            'services_total_amount' => $order->order_product->sum('price'),
             'booking_transaction' => $orderTransaction,
         ];
 
@@ -375,9 +378,9 @@ class OrdersController extends Controller
      */
     public function edit($id)
     {
-        $data = Order::with('services', 'user')->findOrFail($id);
+        $data = Order::with('order_product', 'user')->findOrFail($id);
 
-        return response()->json(['data' => new BookingResource($data), 'status' => true]);
+        return response()->json(['data' => new OrderResource($data), 'status' => true]);
     }
 
     /**
@@ -386,19 +389,19 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(BookingRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $order = Order::findOrFail($id);
 
         $order->update($request->all());
 
-        $this->updateBookingService($request->services, $order->id);
+        $this->updateOrderProduct($request->products, $order->id, $order->user_id);
 
         $message = __('booking.booking_service_update', ['form' => __('booking.singular_title')]);
 
-        $data = Order::with('services', 'user')->findOrFail($order->id);
+        $data = Order::with('order_product', 'user')->findOrFail($order->id);
 
-        return response()->json(['message' => $message, 'status' => true, 'data' => new BookingResource($data)], 200);
+        return response()->json(['message' => $message, 'status' => true, 'data' => new OrderResource($data)], 200);
     }
 
     /**
@@ -508,11 +511,11 @@ class OrdersController extends Controller
 
     public function payment_create(Request $request)
     {
-        $order_id = $request->booking_id;
+        $order_id = $request->order_id ?? $request->booking_id;
         $order = Order::find($order_id);
 
-        $order_services = BookingService::where('booking_id', $order_id)->get();
-        $total_service_amount = $order_services->sum('service_price');
+        $order_services = OrderProduct::where('order_id', $order_id)->get();
+        $total_service_amount = $order_services->sum('price');
 
         $currency = \Currency::getDefaultCurrency();
         $payment_methods = $order->branch->payment_method;
@@ -535,7 +538,7 @@ class OrdersController extends Controller
         return response()->json(['status' => true, 'data' => $data]);
     }
 
-    public function booking_payment(Request $request, Booking $order_id)
+    public function booking_payment(Request $request, Order $order_id)
     {
 
         $data = $request->all();
@@ -565,13 +568,13 @@ class OrdersController extends Controller
         return response()->json(['status' => true, 'data' => $responseData]);
     }
 
-    public function checkout(Booking $order_id, Request $request)
+    public function checkout(Order $order_id, Request $request)
     {
-        $this->updateBookingService($request->services, $order_id->id);
+        $this->updateOrderProduct($request->products, $order_id->id, $order_id->user_id);
 
-        $queryData = Order::with('services', 'user')->findOrFail($order_id->id);
+        $queryData = Order::with('order_product', 'user')->findOrFail($order_id->id);
 
-        return response()->json(['status' => true, 'data' => new BookingResource($queryData), 'message' => __('booking.booking_service_update')]);
+        return response()->json(['status' => true, 'data' => new OrderResource($queryData), 'message' => __('booking.booking_service_update')]);
     }
 
     public function stripe_payment(Request $request)
@@ -586,7 +589,7 @@ class OrdersController extends Controller
             return response()->json(['status' => false, 'data' => $checkout_session]);
         } else {
 
-            BookingTransaction::where('id', $data['booking_transaction_id'])->update(['request_token' => $checkout_session['id']]);
+            OrderTransaction::where('id', $data['order_transaction_id'])->update(['request_token' => $checkout_session['id']]);
 
             return response()->json(['status' => true, 'data_url' => $checkout_session->url, 'data' => $checkout_session]);
         }
@@ -595,17 +598,17 @@ class OrdersController extends Controller
     public function payment_success($id)
     {
 
-        $order_transaction = BookingTransaction::where('id', $id)->first();
+        $order_transaction = OrderTransaction::where('id', $id)->first();
 
         $request_token = $order_transaction['request_token'];
 
-        $order_id = $order_transaction['booking_id'];
+        $order_id = $order_transaction['order_id'];
 
         $session_object = $this->getstripePaymnetId($request_token);
 
         if ($session_object['payment_intent'] !== '' && $session_object['payment_status'] == 'paid') {
 
-            BookingTransaction::where('id', $id)->update(['external_transaction_id' => $session_object['payment_intent'], 'payment_status' => 1]);
+            OrderTransaction::where('id', $id)->update(['external_transaction_id' => $session_object['payment_intent'], 'payment_status' => 1]);
 
             Order::where('id', $order_id)->update(['status' => 'completed']);
 

@@ -31,8 +31,10 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        if (! empty($request->date) && ! empty($request->date)) {
+        if (! empty($request->date) && ! empty($request->time)) {
             $data['start_date_time'] = Carbon::createFromFormat('d/m/Y h:i A', $data['date'].' '.$data['time']);
+        } else {
+            $data['start_date_time'] = now();
         }
         $data['user_id'] = ! empty($request->user_id) ? $request->user_id : auth()->user()->id;
         
@@ -40,11 +42,20 @@ class OrdersController extends Controller
 
         $order = Order::create($data);
         
+        $total_amount = 0;
+        foreach($cart as $item) {
+            $product = ShopProduct::find($item->product_id);
+            if($product) {
+                $total_amount += ($product->default_price ?? 0) * ($item->quantity ?? 1);
+            }
+        }
+        $order->update(['amount' => $total_amount]);
+        
         $this->updateOrderProduct($cart, $order->id , $data['user_id']);
 
         $message = 'New '.Str::singular($this->module_title).' Added';
 
-        return response()->json(['message' => $message, 'status' => true, 'order_id' => $order->id], 200);
+        return response()->json(['message' => $message, 'status' => true, 'order_id' => $order->id, 'booking_id' => $order->id], 200);
     }
 
     public function update(Request $request, $id)
@@ -63,7 +74,7 @@ class OrdersController extends Controller
     public function updateStatus(Request $request) 
     {
         $id = $request->id;
-        $data = Order::with('products')->findOrFail($id);
+        $data = Order::with('order_product')->findOrFail($id);
 
         $data->status = $request->status;
         $data->update();
@@ -104,7 +115,7 @@ class OrdersController extends Controller
             $search = $request->search;
             $order->where(function ($query) use ($search) {
                 $query->where('id', 'LIKE', "%$search%")
-                    ->orWhereHas('products', function ($subquery) use ($search) {
+                    ->orWhereHas('order_product', function ($subquery) use ($search) {
                         $subquery->whereHas('product', function ($employeeQuery) use ($search) {
                             $employeeQuery->where('name', 'LIKE', "%$search%");
                         });
@@ -128,7 +139,7 @@ class OrdersController extends Controller
     {
         $id = $request->id;
 
-        $order_data = Booking::with(['user', 'order_service', 'orderTransaction'])->where('id', $id)->first();
+        $order_data = Order::with(['user', 'order_product', 'payment'])->where('id', $id)->first();
 
         if ($order_data == null) {
             $message = __('order not found');
@@ -218,9 +229,9 @@ class OrdersController extends Controller
 
         $order->update($data);
 
-        $orderProduct = OrderService::where('order_id', $order->id)->get();
+        $orderProduct = OrderProduct::where('order_id', $order->id)->get();
 
-        $this->updateOrderProduct($orderProduct, $order->id);
+        $this->updateOrderProduct($orderProduct, $order->id, $data['user_id'] ?? auth()->user()->id);
 
         return response()->json([
             'status' => true,

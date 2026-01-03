@@ -126,26 +126,26 @@ trait OrderTrait
         $data = mail_footer($type, $booking);
 
         $address = [
-            'address_line_1' => $booking->branch->address->address_line_1,
-            'address_line_2' => $booking->branch->address->address_line_2,
-            'city' => $booking->branch->address->city,
-            'state' => $booking->branch->address->state,
-            'country' => $booking->branch->address->country,
-            'postal_code' => $booking->branch->address->postal_code,
+            'address_line_1' => $booking->address->address_line_1 ?? '',
+            'address_line_2' => $booking->address->address_line_2 ?? '',
+            'city' => $booking->address->city ?? '',
+            'state' => $booking->address->state ?? '',
+            'country' => $booking->address->country ?? '',
+            'postal_code' => $booking->address->postcode ?? '',
         ];
 
         $data['booking'] = [
             'id' => $booking->id,
-            'description' => $booking->note ?? 'Testing Note',
+            'description' => $booking->note ?? '',
             'user_id' => $booking->user_id,
             'user_name' => optional($booking->user)->full_name ?? default_user_name(),
-            'employee_id' => !empty($booking->branch->employee->id) ? $booking->branch->employee->id : '',
-            'employee_name' => $booking->services->first()->employee->full_name ?? 'Staff',
-            'booking_date' => date('d/m/Y', strtotime($booking->start_date_time)),
-            'booking_time' => date('h:i A', strtotime($booking->start_date_time)),
-            'booking_services_names' => implode(', ', $booking->mainServices->pluck('name')->toArray()),
-            'booking_duration' => $booking->services->sum('duration_min') ?? 0,
-            'venue_address' => implode(', ', $address),
+            'employee_id' => '',
+            'employee_name' => 'Staff',
+            'booking_date' => date('d/m/Y', strtotime($booking->start_date_time ?? $booking->created_at)),
+            'booking_time' => date('h:i A', strtotime($booking->start_date_time ?? $booking->created_at)),
+            'booking_services_names' => implode(', ', $booking->mainProducts->pluck('name')->toArray()),
+            'booking_duration' => 0,
+            'venue_address' => implode(', ', array_filter($address)),
         ];
 
         BulkNotification::dispatch($data);

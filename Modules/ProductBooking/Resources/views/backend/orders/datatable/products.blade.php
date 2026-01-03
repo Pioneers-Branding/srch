@@ -1,9 +1,9 @@
 <div style="width: 25%;">
-  @if(count($data->product) > 1)
+  @if(count($data->products) > 1)
     <a class="badge bg-info text-white" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#service-detail-modal-{{ $data->id }}">Multiple</a>
 
      @else
-    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#service-detail-modal-{{ $data->id }}"><small class="badge bg-primary" >{{ $data->product->first()->product_name ?? '-' }}</small> </a>
+    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#service-detail-modal-{{ $data->id }}"><small class="badge bg-primary" >{{ $data->products->first()->product_name ?? '-' }}</small> </a>
   @endif
   
   <!-- Modal -->
@@ -24,7 +24,7 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($data->product as $key => $service)
+                @foreach ($data->products as $key => $service)
                   <tr>
                     <td>{{ ++$key }}</td>
                     <td>{{ $service->product_name }}</td>

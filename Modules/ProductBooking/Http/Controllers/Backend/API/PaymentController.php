@@ -25,6 +25,7 @@ class PaymentController extends Controller
         $data = $request->all();
         $data['tip_amount'] = $data['tip'] ?? 0;
 
+        $data['order_id'] = $data['order_id'] ?? $data['booking_id'] ?? null;
         $order = Order::where('id', $data['order_id'])->first();
 
         $payment = OrderTransaction::create($data);

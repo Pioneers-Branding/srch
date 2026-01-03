@@ -274,7 +274,7 @@
             };
         
             $.ajax({
-                url: api_url + '/save-booking',
+                url: api_url + '/save-order',
                 method: 'POST',
                 data: formData,
                 dataType: 'json',
@@ -314,7 +314,7 @@
             };
         
             $.ajax({
-                url: api_url + '/save-payment',
+                url: api_url + '/save-order-payment',
                 method: 'POST',
                 data: formData,
                 dataType: 'json',
@@ -367,23 +367,10 @@
                 "image": "{{ asset(setting('logo')) }}",
                 "order_id": order_id,
                 "handler": function (response) {
-                    // When payment is successful
-                    // var booking_id = localStorage.getItem('booking_id');
-                    // savePayment(booking_id, response.razorpay_payment_id, response.razorpay_order_id);
-                    // localStorage.removeItem('booking_id');
-                    // callback(true);
-                    
-                     saveBooking(success => {
-                            if (success) {
-                                var booking_id = localStorage.getItem('booking_id');
-                               
-                                savePayment(booking_id, response.razorpay_payment_id, response.razorpay_order_id);
-                                
-                                localStorage.removeItem('booking_id');
-                                
-                                return ;
-                            }
-                        });
+                    var booking_id = localStorage.getItem('booking_id');
+                    savePayment(booking_id, response.razorpay_payment_id, response.razorpay_order_id);
+                    localStorage.removeItem('booking_id');
+                    callback(true);
                 },
                 "prefill": {
                     "name": "{{ Auth::user()->name }}",
@@ -409,7 +396,7 @@
         
         // Event listener for the 'razorpay' button click
         $('#onlineClick').on('click', function() {
-            saveOnline(success => {
+            saveBooking(success => {
                 if (success) {
                     console.log('Booking saved successfully');
                 } else {
